@@ -13,8 +13,8 @@ GRAFANA_PORT=4000
 DEFAULT_USER=wlanpi
 DEFAULT_PWD=wlanpi
 
-DB_USER = wlanpi
-DB_PWD = wlanpi_1963
+DB_USER=wlanpi
+DB_PWD=wlanpi_1963
 
 echo ""
 echo "* ========================="
@@ -92,6 +92,7 @@ echo "* ========================="
 echo "* Configuring InfluxDB..."
 echo "* ========================="
 
+echo "* Creating DB & users..."
 influx -execute "create database wlanpi" 
 influx -execute "create retention policy wiperf_30_days on wlanpi duration 30d replication 1" -database wlanpi
 influx -execute "create user $DB_USER with password '$DB_PWD' with all privileges" -database wlanpi
@@ -100,3 +101,11 @@ influx -execute "create user $DB_USER with password '$DB_PWD' with all privilege
 sudo sed -i 's/# auth-enabled = false/auth-enabled = true/g' /etc/influxdb/influxdb.conf
 sudo systemctl restart influxdb
 
+# add data source to Grafana
+echo "* Adding DB as data source to Grafana..."
+sudo cp influx_datasource.yaml /etc/grafana/provisioning/datasources/
+sudo systemctl restart grafana-server
+
+echo "* Done."
+
+# 

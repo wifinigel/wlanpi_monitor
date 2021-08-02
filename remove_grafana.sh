@@ -41,3 +41,5 @@ sudo systemctl disable influxdb
 sudo apt-get purge influxdb -y
 sudo rm -rf /var/lib/influxdb
 sudo rm /etc/default/influxdb
+
+echo "* Done."

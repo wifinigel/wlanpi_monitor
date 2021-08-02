@@ -1,12 +1,19 @@
 datasources:
  - name: Influx_WLAN_Pi
-   type: InfluxDB
+   type: "influxdb"
+   typeName: "InfluxDB"
+   typeLogoUrl: "public/app/plugins/datasource/influxdb/img/influxdb_logo.svg"
    access: proxy
    orgId: 1
    url: http://127.0.0.1:8086
-   query_language: InfluxQL *
-   password: wlanpi_pwd
-   user: wlanpi
-   database: wlanpi
-   http_method: get *
+   password: "wlanpi_pwd"
+   user: "wlanpi"
+   database: "wlanpi"
+   basicAuth: False
+   isDefault: true
+   jsonData:
+     httpMode: "GET"
+     version: "InfluxQL"
+   version: 1
+   editable: true
    
