@@ -53,12 +53,6 @@ sudo systemctl enable grafana-server
 # display status of service
 echo "* Grafana service status:"
 sudo systemctl status --no-pager -l grafana-server | head -n 10
-
-echo ""
-echo "* ================================================"
-echo "* Browse Grafana at: http://$(hostname -I | xargs):${GRAFANA_PORT}/ (user/pwd=$DEFAULT_USER/$DEFAULT_PWD)"
-echo "* ================================================"
-echo ""
 echo "* Grafana Done."
 
 
@@ -106,6 +100,15 @@ echo "* Adding DB as data source to Grafana..."
 sudo cp influx_datasource.yaml /etc/grafana/provisioning/datasources/
 sudo systemctl restart grafana-server
 
+# set crontab 
+echo "* adding crontab job to start polling..."
+(crontab -l 2>/dev/null; echo "*/1 * * * * /home/wlanpi/wlanpi_monitor/get_stats.sh") | crontab -
+
 echo "* Done."
 
-# 
+echo ""
+echo "* ================================================"
+echo "* Browse Grafana at: http://$(hostname -I | xargs):${GRAFANA_PORT}/ (user/pwd=$DEFAULT_USER/$DEFAULT_PWD)"
+echo "* ================================================"
+echo ""
+echo ""
