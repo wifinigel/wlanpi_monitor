@@ -45,4 +45,7 @@ sudo rm /etc/default/influxdb
 echo "* Removing cron job."
 crontab -l | grep -v 'get_stats.sh'  | crontab -
 
+# tidy up grafana binaries downloaded
+sudo rm grafana*.deb*
+
 echo "* Done."
