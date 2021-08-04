@@ -102,7 +102,7 @@ sudo systemctl restart grafana-server
 
 # add dashboard to Grafana
 echo "* Adding dashboard to Grafana..."
-sudo rm -rf /usr/share/grafana/public/dashboards/
+sudo rm -rf /usr/share/grafana/public/dashboards/*
 sudo cp  dashboard/WLAN_Pi_Monitor.json /usr/share/grafana/public/dashboards/
 sudo cp import_dashboard.yaml /etc/grafana/provisioning/dashboards/
 sudo systemctl restart grafana-server
