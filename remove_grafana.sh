@@ -24,6 +24,7 @@ sudo apt-get purge grafana -y
 sudo rm -rf /etc/grafana
 sudo rm -rf /var/lib/grafana
 sudo rm -rf /var/log/grafana
+sudo rm -rf /usr/share/grafana
 
 echo "* Restoring firewall port."
 sudo ufw deny $GRAFANA_PORT

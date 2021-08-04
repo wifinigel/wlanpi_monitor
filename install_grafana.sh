@@ -102,12 +102,14 @@ sudo systemctl restart grafana-server
 
 # add dashboard to Grafana
 echo "* Adding dashboard to Grafana..."
+sudo rm -rf /usr/share/grafana/public/dashboards/
+sudo cp  dashboard/WLAN_Pi_Monitor.json /usr/share/grafana/public/dashboards/
 sudo cp import_dashboard.yaml /etc/grafana/provisioning/dashboards/
 sudo systemctl restart grafana-server
 
 # set crontab 
 echo "* adding crontab job to start polling..."
-(crontab -l 2>/dev/null; echo "*/1 * * * * /home/wlanpi/wlanpi_monitor/get_stats.sh") | crontab -
+(crontab -l 2>/dev/null; echo "*/1 * * * * /home/wlanpi/dev/wlanpi_monitor/get_stats.sh") | crontab -
 
 echo "* Done."
 

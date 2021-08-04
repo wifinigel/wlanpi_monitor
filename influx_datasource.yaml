@@ -6,7 +6,7 @@ datasources:
    access: proxy
    orgId: 1
    url: http://127.0.0.1:8086
-   password: "wlanpi_pwd"
+   password: "wlanpi_1963"
    user: "wlanpi"
    database: "wlanpi"
    basicAuth: False
