@@ -109,7 +109,7 @@ sudo systemctl restart grafana-server
 
 # set crontab 
 echo "* adding crontab job to start polling..."
-(crontab -l 2>/dev/null; echo "*/1 * * * * /home/wlanpi/wlanpi_monitor/get_stats.sh") | crontab -
+(crontab -u wlanpi -l 2>/dev/null; echo "*/1 * * * * /home/wlanpi/wlanpi_monitor/get_stats.sh") | crontab -u wlanpi -
 
 echo "* Done."
 
