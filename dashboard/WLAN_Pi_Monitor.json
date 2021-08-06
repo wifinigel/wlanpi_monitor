@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 5,
+  "id": 1,
   "links": [],
   "panels": [
     {
@@ -320,6 +320,7 @@
             }
           },
           "mappings": [],
+          "max": 100,
           "min": 0,
           "thresholds": {
             "mode": "absolute",
@@ -567,5 +568,5 @@
   "timezone": "",
   "title": "WLAN Pi Monitor",
   "uid": "qQvaTvggz",
-  "version": 2
+  "version": 1
 }
