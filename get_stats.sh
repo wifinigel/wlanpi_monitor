@@ -32,4 +32,4 @@ CPU_FREQ=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq)
 VOLTAGE=$(/opt/vc/bin/vcgencmd measure_volts | cut -d "=" -f 2  | sed 's/.$//')
 
 curl -u $DB_USER:$DB_PWD -XPOST 'http://localhost:8086/write?db=wlanpi' --data-binary "wlanpi_cpu_freq,host=wlanpi value=${CPU_FREQ}"
-curl -u $DB_USER:$DB_PWD -XPOST 'http://localhost:8086/write?db=wlanpi' --data-binary "wlanpi_voltage,host=wlanpi value=${VOLTAGE}}"
+curl -u $DB_USER:$DB_PWD -XPOST 'http://localhost:8086/write?db=wlanpi' --data-binary "wlanpi_voltage,host=wlanpi value=${VOLTAGE}"
