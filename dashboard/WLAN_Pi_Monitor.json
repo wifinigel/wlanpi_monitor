@@ -637,7 +637,6 @@
             "displayMode": "auto"
           },
           "mappings": [],
-          "noValue": "null",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -671,13 +670,13 @@
           "groupBy": [
             {
               "params": [
-                "$__interval"
+                "1m"
               ],
               "type": "time"
             }
           ],
           "measurement": "wlanpi_throttle",
-          "orderByTime": "ASC",
+          "orderByTime": "DESC",
           "policy": "default",
           "queryType": "randomWalk",
           "refId": "A",
@@ -877,5 +876,5 @@
   "timezone": "",
   "title": "WLAN Pi Monitor",
   "uid": "qQvaTvggz",
-  "version": 3
+  "version": 1
 }
