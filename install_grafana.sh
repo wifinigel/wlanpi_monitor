@@ -9,12 +9,7 @@ fi
 
 set -e
 
-GRAFANA_PORT=4000
-DEFAULT_USER=wlanpi
-DEFAULT_PWD=wlanpi
-
-DB_USER=wlanpi
-DB_PWD=wlanpi_1963
+source .env
 
 echo ""
 echo "* ========================="
@@ -34,8 +29,8 @@ sudo dpkg -i grafana_8.0.5_armhf.deb
 # remove requirement to set default admin pwd & change default user/pwd to wlanpi/wlanpi
 echo "* Customizing Grafana."
 sudo sed -i 's/;disable_initial_admin_creation/disable_initial_admin_creation/g' /etc/grafana/grafana.ini
-sudo sed -i 's/;admin_user = admin/admin_user = '"$DEFAULT_USER"'/g' /etc/grafana/grafana.ini
-sudo sed -i 's/;admin_password = admin/admin_password = '"$DEFAULT_PWD"'/g' /etc/grafana/grafana.ini
+sudo sed -i 's/;admin_user = admin/admin_user = '"$GRAFANA_USER"'/g' /etc/grafana/grafana.ini
+sudo sed -i 's/;admin_password = admin/admin_password = '"$GRAFANA_PWD"'/g' /etc/grafana/grafana.ini
 
 # set grafana to listen on port GRAFANA_PORT
 sudo sed -i 's/;http_port = 3000/http_port = '"$GRAFANA_PORT"'/g' /etc/grafana/grafana.ini
@@ -121,7 +116,7 @@ echo "* Done."
 
 echo ""
 echo "* ================================================"
-echo "* Browse Grafana at: http://$(hostname -I | xargs):${GRAFANA_PORT}/ (user/pwd=$DEFAULT_USER/$DEFAULT_PWD)"
+echo "* Browse Grafana at: http://$(hostname -I | xargs):${GRAFANA_PORT}/ (user/pwd=$GRAFANA_USER/$GRAFANA_PWD)"
 echo "* ================================================"
 echo ""
 echo ""
